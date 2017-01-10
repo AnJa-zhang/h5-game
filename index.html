@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>a # chess game</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+	<script type="text/javascript" src="js/game.js"></script>
+</head>
+<body>
+	<div class="game-container">
+		<h2>井字棋小游戏</h2>
+		<div class="wrapper">
+			<div class="chess-boader">
+				<ul id="chess-area">
+					<li class="empty"></li>
+					<li class="empty"></li>
+					<li class="empty"></li>
+					<li class="empty"></li>
+					<li class="empty"></li>
+					<li class="empty"></li>
+					<li class="empty"></li>
+					<li class="empty"></li>
+					<li class="empty"></li>
+				</ul>
+			</div>
+			<div class="game-result-wrapper"></div>			
+		</div>
+	</div>
+<script type="text/javascript">
+$(function(){
+	var chess_game = new game;
+	var array = [];
+	chess_game.init({
+		chess_boarder: '#chess-area',	
+		result_wrapper: '.game-result-wrapper'
+	});
+
+	array = $('#chess-area').find('li');
+
+	console.log();
+
+});
+</script>
+</body>
+
+</html>
