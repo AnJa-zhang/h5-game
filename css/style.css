@@ -21,7 +21,6 @@ body{
     max-width: 400px;
     height: 400px;
     overflow: hidden;
-	background: url('../images/bg.jpg') no-repeat;
 	background-size: cover;
 	box-shadow: 1px 5px 10px rgba(51, 51, 51, 0.86);
 }
@@ -47,13 +46,16 @@ body{
 #chess-area li{
 	display: block;
 	list-style: none;
-	width:33.3%;
-	height: 33.3%;
+    background: #404040;
+    border: 1px solid #868686;
+    width: 24.5%;
+    height: 24.5%;
+    float: left;
 	float: left;
 }
 #chess-area li:hover{
 	cursor: pointer;
-	background: rgba(255, 255, 255, 0.1);
+	background: rgba(43, 43, 43, 0.8);
 }
 .round-piece{
 	display: inline-block;
