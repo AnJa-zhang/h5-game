@@ -48,9 +48,8 @@ body{
 	list-style: none;
     background: #404040;
     border: 1px solid #868686;
-    width: 24.5%;
-    height: 24.5%;
-    float: left;
+    width: 32.8%;
+    height: 33%;
 	float: left;
 }
 #chess-area li:hover{

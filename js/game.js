@@ -36,7 +36,7 @@
 					return;
 				}
 
-				let next_target = _self._get_best_move();
+				let next_target = _self._get_best_move(this.index_x, this.index_y, n);
 				setTimeout( () => {
 					_self._generate_piece(next_target, 'second');
 
@@ -71,27 +71,25 @@
 			var self_list = $(this.chess_piece_wrapper).find('.sp');
 			var empty_block_list =  this.chess_boarder.find('.empty');
 
-			this.isEmpty(elements) => {
-				for(let i in elements) {
+			this.isEmpty = function(elements) {
+				for(let i in elements){
 					let x = elements[i][0], y = elements[i][1];
 					if( x >= 0 && x < n && y >= 0 && y < n   && $(this.chess_piece_wrapper[x*n + y]).hasClass('empty')) {
 						return [x, y] ;
-					}else{
-						return false;
-					}
+					}					
 				}
+				return false;
 			}
 
-			this.calculate(x,y) => {
+			this.calculate =function(x,y,player) {
 
 				for(let i=x-1; i<=x+1; i++) {
-					let score = 0;
 					for(let j=y-1; j<=y+1; j++) {
 						if(!( i === x && j === y) &&(this.check(i,j,player))) {
-							let elements = new Array;
-							elements.push([i+(x-i)*2,j+(y-j)*2], [x+(i-x)*2, y+(j-y)*2])
-							if(this.isEmpty(elements)) {
-								return this.isEmpty(elements);
+							let element =[[i+(x-i)*2,j+(y-j)*2], [x+(i-x)*2, y+(j-y)*2]];
+							if(this.isEmpty(element)) {
+								console.log(player, element);
+								return this.isEmpty(element);
 							}
 						}
 					}
@@ -101,10 +99,10 @@
 					let score = 0;
 					for(let j=y-2; j<=y+2; j+=2) {
 						if(!( i === x && j === y) &&(this.check(i,j,player))) {
-							let elements = new Array;
-							elements.push([(i+x)/2,(i+y)/2]);
-							if(this.isEmpty(elements)) {
-								return this.isEmpty(elements);
+							let element = [(i+x)/2,(i+y)/2];
+							if(this.isEmpty(element)) {
+								console.log(player, element);
+								return this.isEmpty(element);
 							}
 						}
 					}
@@ -113,14 +111,19 @@
 			}
 
 			for(let i=0; i < self_list.length; i++) {
-				if(this.calculate(self_list[i].index_x, self_list[i].index_y)) {
-					return empty_block_list[self_list[i].index_x * n + self_list[i].index_y]
+				if(this.calculate(self_list[i].index_x, self_list[i].index_y, 'sp')) {
+					console.log(self_list[i].index_x + ',' +self_list[i].index_y + 'start search.....')
+					return this.chess_piece_wrapper[self_list[i].index_x * n + self_list[i].index_y]
 				}
 			}
 
-			if(this.calculate(x1, y1)){
-				return empty_block_list[x1 * n + y1]; 
+			console.log('sp is over, rp start...')
+
+			if(this.calculate(x1, y1,'rp')){
+				console.log('rp found' + this.calculate(x1, y1,'rp'));
+				return this.chess_piece_wrapper[this.calculate(x1, y1,'rp')[0] * n + this.calculate(x1, y1,'rp')[1]]; 
 			}else{
+				console.log('nothing,start random...')
 				return this._get_random_blcok();
 			}
 		},
