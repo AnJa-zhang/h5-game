@@ -44,11 +44,11 @@
 						return;
 					}
 				}, 1000);
-
 			});
 		},
 
 		_generate_piece: function (element,player) {
+
 			if (player == 'first') {
 				$(element).html(_RP_TPL).removeClass('empty').addClass('rp').off('click');	
 			}else{
