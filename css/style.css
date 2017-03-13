@@ -47,39 +47,50 @@ body {
   display: block;
   position: relative;
   list-style: none;
-  background: #404040;
+  background-image: linear-gradient(130deg, #2b2b2b 40%, #7d7d7d 20%, #353535 40%);
   border: 1px solid #868686;
   width: 32.8%;
   height: 33%;
   float: left;
+  transition-property: background-image 2s linear;
+  /* Firefox 4 */
+  -moz-transition: background-image 2s linear;
+  /* Safari and Crome */
+  -webkit-transition: background-image 2s linear;
+  /* Opera */
+  -o-transition: background-image 2s linear;
 }
 #chess-area li:hover {
   cursor: pointer;
-  background: rgba(43, 43, 43, 0.8);
+  background-image: linear-gradient(220deg, #2b2b2b 40%, #7d7d7d 20%, #353535 40%);
 }
 .round-piece {
   display: inline-block;
-  width: 70%;
-  height: 70%;
+  width: 60%;
+  height: 60%;
   margin: auto;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   position: absolute;
-  background: rgba(241, 16, 16, 0.44);
+  background-image: -webkit-radial-gradient(circle at top, #fff, #383838);
+  background-image: radial-gradient(circle at top, #fff, #383838);
+  box-shadow: 1px 2px #000;
   border-radius: 50%;
 }
 .square-piece {
   display: inline-block;
-  width: 70%;
-  height: 70%;
+  width: 60%;
+  height: 60%;
   margin: auto;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   position: absolute;
-  background: rgba(255, 255, 255, 0.68);
+  background-image: -webkit-radial-gradient(circle at top, #ff6e74, #3a0606);
+  background-image: radial-gradient(circle at top, #ff6e74, #3a0606);
+  box-shadow: 1px 2px #000;
   border-radius: 50%;
 }
