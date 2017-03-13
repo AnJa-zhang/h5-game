@@ -177,8 +177,14 @@
  		},
 
  		_end_game: function (player) {
+ 			var winner = 'No one';
  			this.result_wrapper.css('display', 'block');
- 			this.result_wrapper.html('<p>'+ player +' wins!</p><br/><a class="restart_btn" href="javascript:;">restart!</a>');
+ 			if(player === 'sp') {
+ 				winner = 'Red player';
+ 			}else if(player === 'rp') {
+ 				winner = 'White player'
+ 			}
+ 			this.result_wrapper.html('<p>'+ winner +' wins!</p><br/><a class="restart_btn" href="javascript:;">restart!</a>');
  			this.chess_piece_wrapper.off('click');
  			$('.restart_btn').on('click', () => {
  				this._restart_game()
